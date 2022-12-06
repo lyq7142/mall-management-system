@@ -10,14 +10,15 @@
         </el-breadcrumb>
     </div>
     <div class="r-content">
+        <!-- command 点击菜单项触发的事件回调 -->
         <el-dropdown @command="handleClick">
-        <span class="el-dropdown-link">
-            <img class="user" src="../assets/images/user.jpg" alt="">
-        </span>
-        <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>个人中心</el-dropdown-item>
-            <el-dropdown-item command="cancel">退出</el-dropdown-item>
-        </el-dropdown-menu>
+            <span class="el-dropdown-link">
+                <img class="user" src="../assets/images/user.jpg" alt="">
+            </span>
+            <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>个人中心</el-dropdown-item>
+                <el-dropdown-item command="cancel">退出</el-dropdown-item>
+            </el-dropdown-menu>
         </el-dropdown>
     </div>
   </div>
@@ -29,8 +30,7 @@ import Cookie from 'js-cookie'
 export default {
     name:"CommonHeader",
     data(){
-        return {
-        }
+        return {}
     },
     methods:{
         // 控制左侧菜单是否折叠
@@ -59,7 +59,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-// 写了scoped ->不会覆盖elementUI默认的样式
 .header-container{
     padding: 0 20px;
     background-color: #333;
@@ -77,7 +76,7 @@ export default {
     .l-content{
         display: flex;
         align-items: center;
-        //deep可以强制修改默认ElementUI样式
+        // deep 强制修改默认ElementUI样式
         /deep/.el-breadcrumb__item{
             .el-breadcrumb__inner{
                 font-weight: normal;
@@ -94,5 +93,4 @@ export default {
         }
     }
 }
-
 </style>

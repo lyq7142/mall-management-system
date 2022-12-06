@@ -11,12 +11,12 @@
         <el-header>
          <common-header />
         </el-header>
-
+        <!-- 面包屑 -->
         <common-tag />
-
+        <!-- 中间部分 -->
         <el-main> 
-             <!-- 唯一变化的地方，用router-view展示所需控件  -->
-            <router-view></router-view>
+          <!-- 唯一变化的地方，用router-view展示所需控件  -->
+          <router-view></router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -26,13 +26,14 @@
 <script>
 import CommonAside from '../components/CommonAside.vue'
 import CommonHeader from '../components/CommonHeader.vue'
-import CommonTag from  '../components/CommonTag.vue'
+import CommonTag from '../components/CommonTag.vue'
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
   name: "Main",
-  data() {
-    return {};
+  data () {
+    return {}
   },
-  components:{
+  components: {
     CommonAside,
     CommonHeader,
     CommonTag
@@ -44,5 +45,4 @@ export default {
 .el-header{
     padding: 0;
 }
- 
 </style>

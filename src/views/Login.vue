@@ -5,7 +5,7 @@
             <el-form-item label="用户名" prop="username">
                 <el-input v-model="form.username" placeholder="请输入账号"></el-input>
             </el-form-item>
-            <el-form-item label="密码" ="password">
+            <el-form-item label="密码" prop= "password">
                 <el-input type="password" v-model="form.password" placeholder="请输入密码"></el-input>
             </el-form-item>
             <el-form-item>
@@ -17,11 +17,12 @@
 </template>
 
 <script>
-import Mock from 'mockjs'
+// import Mock from 'mockjs'
 import Cookie from 'js-cookie'
 import { getMenu } from '../api'
 export default {
-    // name:"Login",
+    // eslint-disable-next-line vue/multi-word-component-names
+    name:"Login",
     data(){
         return{
             form:{
@@ -48,7 +49,7 @@ export default {
             this.$refs.form.validate((valid)=>{
                 if(valid){
                     getMenu(this.form).then(({ data })=>{
-                        console.log(data);
+                        // console.log(data);
                         if(data.code===20000){
                             Cookie.set('token', data.data.token)
                             // 获取菜单的数据，存入store中

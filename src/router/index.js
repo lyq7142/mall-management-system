@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import User from '../views/User.vue'
 import Main from '../views/Main.vue'
-import Mall from '../views/Mall.vue'
-import PageOne from '../views/PageOne.vue'
-import PageTwo from '../views/PageTwo.vue'
 import Login from '../views/Login.vue'
+// import Home from '../views/Home.vue'
+// import User from '../views/User.vue'
+// import Mall from '../views/Mall.vue'
+// import PageOne from '../views/PageOne.vue'
+// import PageTwo from '../views/PageTwo.vue'
 Vue.use(VueRouter);
 
 const routes = [
@@ -14,8 +14,8 @@ const routes = [
         path:'/',
         component: Main,
         name:'Main',
-        redirect:'/home',  //重定向
-        children: [   //子路由
+        redirect:'/home',  // 重定向
+        children: [   // 子路由
             // {
             //     path:'home',
             //     name:'home',

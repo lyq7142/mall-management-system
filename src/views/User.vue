@@ -1,5 +1,6 @@
 <template>
     <div class="manage">
+        <!-- 提示框 -->
         <el-dialog
             title="提示"
             :visible.sync="dialogVisible"
@@ -31,7 +32,6 @@
                     <el-input placeholder="请输入地址" v-model="form.addr"></el-input>
                 </el-form-item>
             </el-form>
-
             <span slot="footer" class="dialog-footer">
                 <el-button @click="cancel">取 消</el-button>
                 <el-button type="primary" @click="submit">确 定</el-button>
@@ -54,7 +54,7 @@
         <div class="common-table">
             <!-- stripe 斑马纹 -->
             <el-table
-            stripe
+                stripe
                 height="90%"
                 :data="tableData"
                 style="width: 100%" >
@@ -92,10 +92,11 @@
 <script>
 import {getUser,addUser ,editUser,delUser} from '../api'
 export default {
-    name:"User",
-    data(){
-        return{
-            dialogVisible:false,
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: "User",
+    data () {
+        return {
+            dialogVisible: false,
             form:{
                 name:'',
                 age:'',

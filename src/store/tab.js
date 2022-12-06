@@ -3,7 +3,7 @@ export default{
     // 存储数据
     state:{
         isCollapse: false,   //菜单展开
-        tabsList:[
+        tabsList:[   //面包屑数据
             {
                 path: "/",
                 name: "home",
@@ -11,8 +11,8 @@ export default{
                 icon: "s-home",
                 url: "Home/Home",
             }
-        ] ,   //面包屑数据
-        menu:[]
+        ] , 
+        menu:[]  // 菜单栏
     },
     // 调用方法
     mutations:{
@@ -21,7 +21,7 @@ export default{
             state.isCollapse = !state.isCollapse 
         },
         //更新面包屑数据
-        selectMenu(state,val){
+        selectMenu(state, val){
             // console.log(val,'val');
             if(val.name !== 'home'){  //判断添加的数据是否首页
                 const index = state.tabsList.findIndex(item => item.name === val.name)
@@ -31,10 +31,10 @@ export default{
                 }
             }
         },
-        // 关闭标签
+        // 关闭标签，面包屑
         closeTag(state,item){ 
             // console.log(item,'item')
-            const index = state.tabsList.findIndex(val=>val.name === item.name)
+            const index = state.tabsList.findIndex(val => val.name === item.name)
             state.tabsList.splice(index,1)
         },
         // 设置menu的数据
@@ -62,12 +62,11 @@ export default{
                     menuArray.push(item)
                 }
             })
-            console.log(menuArray,'menuArray');
+            // console.log(menuArray,'menuArray');
             // 路由的动态添加
-            menuArray.forEach(item=>{
+            menuArray.forEach(item => {
                 router.addRoute('Main', item)
             })
         }
-
     }
 }

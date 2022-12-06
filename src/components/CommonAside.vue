@@ -1,5 +1,5 @@
 <template>
-  <!--collapse 是否水平折叠收起菜单-->
+  <!--collapse 是否折叠菜单-->
   <el-menu
     default-active="1-4-1"
     class="el-menu-vertical-demo"
@@ -10,7 +10,7 @@
     text-color="#fff"
     active-text-color="#ffd04b"
   >
-    <h3>{{isCollapse? '后台':'通用后台管理系统'}}</h3>
+    <h3>{{isCollapse? '后台':'商品后台管理系统'}}</h3>
     <el-menu-item @click="clickMenu(item)"  v-for="item in noChildren" :key="item.name" :index="item.name">
       <i :class="`el-icon-${item.icon}`"></i>
       <span slot="title">{{ item.label }}</span>
@@ -88,14 +88,14 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
-    // 根据名称 跳转路由
+    // 根据不同名称 跳转路由
     clickMenu(item) {
       if ( this.$route.path !== item.path && !(this.$route.path === "/home" && (item.path === "/"))) {
       //  跳转路由（当页面的路由和跳转的路由不一致）
        this.$router.push(item.path);
       }
-      // 调用vuex的selectMenu方法存储数据
-      this.$store.commit('selectMenu',item)
+      // 调用vuex的selectMenu方法存储数据，更新面包屑数据
+      this.$store.commit('selectMenu', item)
     },
   },
   computed: {
@@ -111,7 +111,7 @@ export default {
       // 判断当前数据，如果缓存中没有，当前store中获取
       return JSON.parse(Cookie.get('menu')) || this.$store.state.tab.menu
     },
-    isCollapse(){   //从vuex中取得数据
+    isCollapse(){   //从vuex中获取数据
         return this.$store.state.tab.isCollapse;
     }
   },

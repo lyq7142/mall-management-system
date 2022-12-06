@@ -2,9 +2,10 @@
     <el-row>
         <!-- span默认总24，两个分隔栏所占宽度1:2  ，即8:16 -->
       <el-col :span="8" style="padding-right:10px">
+            <!-- 用户信息卡片 -->
             <el-card class="box-card" shadow='hover'>
                 <div class="user">
-                    <img src="../assets/images/user.jpg" alt="">
+                    <img src="../assets/images/user.jpg" alt="头像">
                     <div class="userinfo">
                         <p class="name">Admin</p>
                         <p class="access">超级管理员</p>
@@ -15,13 +16,14 @@
                     <p>上次登录地点：<span>南京</span></p>
                 </div>
             </el-card>
-            <!-- 左下方表格 -->
+            <!-- 数据表格 -->
             <el-card shadow="hover" style="margin-top: 20px;height: 460px;">
                 <el-table :data="tableData" style="width: 100%">
                     <el-table-column v-for="(val,key) in tableLabel" :key="key" :prop="key" :label="val" />
                 </el-table>
             </el-card>        
       </el-col>
+      <!-- 右侧区域 -->
       <el-col :span="16"  style="padding-left:10px">
         <!-- 右上方6个盒子 -->
         <div class="num">
@@ -34,7 +36,7 @@
             </el-card>
         </div>
         <el-card shadow="hover" style="height:280px">
-            <!-- 折线图 -->
+            <!-- 折线图（大） -->
             <div ref="echarts1" style="height:280px"></div>
         </el-card>
         <div class="graph">
@@ -47,7 +49,6 @@
                 <div ref="echarts3" style="height:240px"></div>
             </el-card>
         </div>
-
       </el-col>
     </el-row>
 </template>
@@ -56,17 +57,18 @@
 import { getData } from "../api"
 import * as echarts from 'echarts'
 export default {
+    // eslint-disable-next-line vue/multi-word-component-names
     name: "Home",
-    data(){
+    data () {
         return{
-            tableData: [ ],
-            tableLabel: {
+            tableData: [ ],  // 表格数据
+            tableLabel: {    // 列名
                 name:'课程',
                 todayBuy:'今日购买',
                 monthBuy:'本月购买',
                 totalBuy:'总购买'
             },
-            countData:[
+            countData:[  // 6个盒子
             {
                 name:"今日支付订单",
                 value:1234,
@@ -102,7 +104,7 @@ export default {
 
         }
     },
-    mounted(){
+    mounted () {
         getData().then(({data}) => {
             const {tableData} = data.data
             this.tableData = tableData
@@ -145,7 +147,7 @@ export default {
                 },
                 xAxis:{
                     type:"category",
-                    data: userData.map(item=>item.data),
+                    data: userData.map(item => item.data),
                     axisLine:{
                         lineStyle:{
                             color:"#17b3a3",
@@ -204,7 +206,6 @@ export default {
                 ],
             }
             echarts3.setOption(echarts3Option)
-
         })
     }
 }
@@ -234,7 +235,6 @@ export default {
         }
     }
 }
-
 .login-info{
     p{
         line-height: 28px;
@@ -280,7 +280,6 @@ export default {
             margin-bottom: 20px;
         }
 }
-
 .graph{
     display: flex;
     justify-content: space-between;

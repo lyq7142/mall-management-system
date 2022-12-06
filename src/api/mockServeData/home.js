@@ -76,7 +76,7 @@ export default {
                 //折线图
                 orderData:{
                     data:['20191001','20191002','20191003','20191004','20191005','20191006','20191007'],
-                    data:List
+                    type:List
                 },
                 // 表格
                 tableData:[
